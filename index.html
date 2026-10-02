@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#00629B">
+    <meta name="description" content="لعبة حقيقة أم خرافة التفاعلية من فرع IEEE الطلابي بجامعة القصيم">
+    <title>TRUTH OR MYTH | IEEE Day</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">انتقل إلى المحتوى</a>
+
+    <div class="background-art" aria-hidden="true">
+        <span class="background-glow background-glow--green"></span>
+        <span class="background-glow background-glow--orange"></span>
+        <svg class="curve-art" viewBox="0 0 560 560" focusable="false">
+            <path d="M-24 104C129 33 197 58 245 178C282 270 362 271 446 213C513 167 565 182 598 230" />
+            <path d="M-7 165C116 111 167 132 207 235C244 330 334 351 435 280C508 229 560 242 594 284" />
+        </svg>
+    </div>
+
+    <main class="app-shell" id="main-content">
+        <article class="game-card" aria-label="لعبة حقيقة أم خرافة">
+            <div class="brand-bar">
+                <img
+                    class="branch-logo"
+                    src="assets/ieee-qu-logo.png"
+                    alt="فرع IEEE الطلابي بجامعة القصيم"
+                >
+
+                <span class="event-label" dir="ltr">IEEE DAY • QASSIM UNIVERSITY</span>
+            </div>
+
+            <div class="screen-container">
+                <section class="screen screen--start is-active" id="start-screen" aria-labelledby="main-title">
+                    <div class="start-content">
+                        <img
+                            class="ieee-day-logo"
+                            src="assets/IEEE-Day.svg"
+                            alt="شعار IEEE Day"
+                        >
+
+                        <div class="title-group">
+                            <p class="eyebrow">تحدٍ سريع • معلومات مفيدة</p>
+                            <h1 class="main-title" id="main-title" dir="ltr">TRUTH OR MYTH</h1>
+                            <p class="arabic-title">حقيقة أم خرافة</p>
+                        </div>
+
+                        <p class="description">اختبر معلوماتك عن IEEE</p>
+
+                        <button class="primary-button" id="start-button" type="button">
+                            <span>ابدأ التحدي</span>
+                            <span class="button-arrow" aria-hidden="true">←</span>
+                        </button>
+
+                        <p class="game-info">
+                            <span class="info-dot" aria-hidden="true"></span>
+                            3 أسئلة عشوائية
+                        </p>
+                    </div>
+                </section>
+
+                <section class="screen screen--question" id="question-screen" aria-labelledby="question-text" hidden>
+                    <div class="question-layout">
+                        <div class="progress-section">
+                            <div class="progress-copy">
+                                <p class="progress-label" id="progress-label">السؤال 1 من 3</p>
+                                <p class="progress-hint">اختر حقيقة أو خرافة</p>
+                            </div>
+
+                            <div
+                                class="progress-track"
+                                id="progress-track"
+                                role="progressbar"
+                                aria-label="تقدم الجولة"
+                                aria-valuemin="1"
+                                aria-valuemax="3"
+                                aria-valuenow="1"
+                            >
+                                <span class="progress-fill" id="progress-fill"></span>
+                            </div>
+                        </div>
+
+                        <div class="question-stage" id="question-stage">
+                            <p class="question-kicker">صنّف العبارة التالية</p>
+                            <h2 class="question-text" id="question-text" tabindex="-1"></h2>
+
+                            <div class="answer-buttons" role="group" aria-label="خيارات الإجابة">
+                                <button class="answer-button answer-button--truth" type="button" data-answer="true">
+                                    <span class="answer-symbol" aria-hidden="true">✓</span>
+                                    <span>حقيقة</span>
+                                </button>
+
+                                <button class="answer-button answer-button--myth" type="button" data-answer="false">
+                                    <span class="answer-symbol" aria-hidden="true">×</span>
+                                    <span>خرافة</span>
+                                </button>
+                            </div>
+
+                            <div class="feedback-panel" id="feedback-panel" aria-live="polite" hidden>
+                                <div class="feedback-heading">
+                                    <span class="feedback-icon" id="feedback-icon" aria-hidden="true"></span>
+                                    <div>
+                                        <p class="feedback-status" id="feedback-status"></p>
+                                        <p class="correct-answer" id="correct-answer"></p>
+                                    </div>
+                                </div>
+
+                                <p class="explanation" id="explanation"></p>
+
+                                <button class="next-button" id="next-button" type="button">
+                                    <span id="next-button-text">السؤال التالي</span>
+                                    <span aria-hidden="true">←</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="screen screen--result" id="result-screen" aria-labelledby="result-title" hidden>
+                    <div class="result-content">
+                        <img class="result-star" src="assets/identity-star.png" alt="">
+
+                        <p class="result-kicker">اكتملت الجولة</p>
+                        <h2 class="result-title" id="result-title">نتيجتك</h2>
+
+                        <div class="score-display" aria-label="النتيجة النهائية">
+                            <span id="score-value">0</span>
+                            <span class="score-divider">/</span>
+                            <span>3</span>
+                        </div>
+
+                        <p class="result-message" id="result-message"></p>
+
+                        <div class="result-actions">
+                            <button class="primary-button" id="play-again-button" type="button">
+                                <span>العب مرة أخرى</span>
+                                <span class="replay-icon" aria-hidden="true">↻</span>
+                            </button>
+
+                            <button class="secondary-button" id="home-button" type="button">
+                                <span>العودة للصفحة الرئيسية</span>
+                                <span class="home-icon" aria-hidden="true">⌂</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <img class="card-star" src="assets/identity-star.png" alt="" aria-hidden="true">
+        </article>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
