@@ -46,6 +46,7 @@
                     <div class="start-content">
                         <img
                             class="ieee-day-logo"
+                            id="ieee-day-logo"
                             src="assets/IEEE-Day.svg"
                             alt="شعار IEEE Day"
                         >
@@ -92,7 +93,16 @@
                         </div>
 
                         <div class="question-stage" id="question-stage">
-                            <p class="question-kicker">صنّف العبارة التالية</p>
+                            <p class="question-kicker" id="question-kicker">
+                                <img
+                                    class="challenge-kicker-star"
+                                    id="challenge-kicker-star"
+                                    src="assets/identity-star.png"
+                                    alt=""
+                                    hidden
+                                >
+                                <span id="question-kicker-text">صنّف العبارة التالية</span>
+                            </p>
                             <h2 class="question-text" id="question-text" tabindex="-1"></h2>
 
                             <div class="answer-buttons" role="group" aria-label="خيارات الإجابة">
@@ -160,6 +170,29 @@
             <img class="card-star" src="assets/identity-star.png" alt="" aria-hidden="true">
         </article>
     </main>
+
+    <div
+        class="admin-reset-modal"
+        id="admin-reset-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="admin-reset-title"
+        aria-describedby="admin-reset-description"
+        hidden
+    >
+        <div class="admin-reset-dialog">
+            <img class="admin-reset-star" src="assets/identity-star.png" alt="">
+            <h2 id="admin-reset-title">إعادة ضبط دورة الأسئلة؟</h2>
+            <p id="admin-reset-description">
+                سيتم إعادة خلط بنك الأسئلة والبدء من دورة جديدة.
+            </p>
+
+            <div class="admin-reset-actions">
+                <button class="secondary-button" id="admin-reset-cancel" type="button">إلغاء</button>
+                <button class="primary-button" id="admin-reset-confirm" type="button">إعادة الضبط</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

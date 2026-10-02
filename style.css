@@ -245,6 +245,9 @@ button:focus-visible,
     height: auto;
     margin-bottom: 18px;
     filter: drop-shadow(0 12px 18px rgba(0, 74, 115, 0.13));
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .title-group {
@@ -407,7 +410,33 @@ button:focus-visible,
 }
 
 .question-kicker {
+    min-height: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
     margin-bottom: 13px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    transition:
+        color 220ms ease,
+        border-color 220ms ease,
+        background-color 220ms ease,
+        padding 220ms ease;
+}
+
+.question-kicker.is-challenge {
+    padding: 5px 11px;
+    border-color: rgba(101, 141, 27, 0.26);
+    color: var(--ieee-green);
+    background: rgba(224, 232, 209, 0.62);
+}
+
+.challenge-kicker-star {
+    width: 18px;
+    height: 20px;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 5px rgba(101, 141, 27, 0.16));
 }
 
 .question-text {
@@ -714,6 +743,74 @@ button:focus-visible,
     line-height: 1;
 }
 
+body.has-open-modal {
+    overflow: hidden;
+}
+
+.admin-reset-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    padding:
+        max(20px, env(safe-area-inset-top))
+        max(20px, env(safe-area-inset-right))
+        max(20px, env(safe-area-inset-bottom))
+        max(20px, env(safe-area-inset-left));
+    background: rgba(0, 42, 66, 0.62);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: modal-backdrop-in 220ms ease both;
+}
+
+.admin-reset-modal[hidden] {
+    display: none;
+}
+
+.admin-reset-dialog {
+    width: min(430px, 100%);
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.68);
+    border-radius: 24px;
+    color: var(--text);
+    text-align: center;
+    background: linear-gradient(145deg, #ffffff, #f5f9fb);
+    box-shadow: 0 26px 70px rgba(0, 35, 56, 0.32);
+    animation: modal-dialog-in 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.admin-reset-star {
+    width: 38px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.admin-reset-dialog h2 {
+    margin: 0;
+    color: var(--blue-ink);
+    font-size: 1.45rem;
+}
+
+.admin-reset-dialog p {
+    margin: 11px 0 24px;
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.75;
+}
+
+.admin-reset-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+}
+
+.admin-reset-actions .primary-button,
+.admin-reset-actions .secondary-button {
+    width: 100%;
+    min-width: 0;
+}
+
 .card-star {
     position: absolute;
     right: 30px;
@@ -765,6 +862,26 @@ button:focus-visible,
     to {
         opacity: 1;
         transform: rotate(0) scale(1);
+    }
+}
+
+@keyframes modal-backdrop-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modal-dialog-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -878,6 +995,14 @@ button:focus-visible,
     .result-actions {
         grid-template-columns: 1fr;
         width: min(270px, 100%);
+    }
+
+    .admin-reset-dialog {
+        padding: 25px 20px 20px;
+    }
+
+    .admin-reset-actions {
+        grid-template-columns: 1fr;
     }
 }
 
